@@ -1,0 +1,52 @@
+[
+    {
+        "text": "What is the capital of Australia?",
+        "options": ["Sydney", "Melbourne", "Canberra"],
+        "correct_option": 3
+    },
+    {
+        "text": "Which river flows through Cairo, the capital of Egypt?",
+        "options": ["Nile", "Tigris", "Euphrates"],
+        "correct_option": 1
+    },
+    {
+        "text": "Which African country is known as the 'Pearl of Africa'?",
+        "options": ["Uganda", "Tanzania", "Kenya"],
+        "correct_option": 1
+    },
+    {
+        "text": "Which desert covers much of Botswana, Namibia, and South Africa?",
+        "options": ["Sahara Desert", "Kalahari Desert", "Atacama Desert"],
+        "correct_option": 2
+    },
+    {
+        "text": "Which mountain range separates Europe from Asia?",
+        "options": ["Himalayas", "Rocky Mountains", "Ural Mountains"],
+        "correct_option": 3
+    },
+    {
+        "text": "Which river is the longest in Europe?",
+        "options": ["Rhine", "Danube", "Volga"],
+        "correct_option": 3
+    },
+    {
+        "text": "What is the largest island in the world?",
+        "options": ["Madagascar", "Greenland", "Borneo"],
+        "correct_option": 2
+    },
+    {
+        "text": "Which country is also known as the 'Land of Fire and Ice'?",
+        "options": ["Iceland", "Greenland", "New Zealand"],
+        "correct_option": 1
+    },
+    {
+        "text": "Which ocean is the smallest and shallowest among the world's oceans?",
+        "options": ["Arctic Ocean", "Indian Ocean", "Atlantic Ocean"],
+        "correct_option": 1
+    },
+    {
+        "text": "What is the tallest mountain in North America?",
+        "options": ["Mount Kilimanjaro", "Mount Elbrus", "Denali"],
+        "correct_option": 3
+    }
+]
