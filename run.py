@@ -1,5 +1,6 @@
 import json
 import random
+import os
 
 
 class Question:
@@ -71,23 +72,27 @@ class Questionnaire:
             self.score, num_questions_asked, score_percentage)
         print(score_message)
 
+    def clear_screen(self):
+        os.system('clear' if os.name == 'posix' else 'cls')
+
 
 def main():
-    geography_questionnaire = Questionnaire()
-    geography_questionnaire.load_questions_from_file(
-        "geography_questions.json")
+    q = Questionnaire()
+    q.load_questions_from_file("geography_questions.json")
 
     while True:
         print("Welcome to the Geography Quiz!")
-        geography_questionnaire.take_quiz()
+        q.take_quiz()
 
         retake = input("Do you want to retake the quiz? (yes/no): ")
         if retake.lower() != "yes":
             print("Thank you for taking the quiz!")
+            q.reset()
             break
         else:
             print("Let's retake the quiz!\n")
-            geography_questionnaire.reset()
+            q.reset()
+            q.clear_screen()  # Clear the screen
 
 
 if __name__ == "__main__":
