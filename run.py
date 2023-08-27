@@ -1,5 +1,7 @@
 import json
 import random
+import os
+import shutil
 
 
 class Question:
@@ -28,9 +30,9 @@ class Questionnaire:
                 self.questions.append(question)
 
     def display_question(self, index, question):
-        print(f"Question {index}: {question.text}")
+        print("Question %d: %s" % (index, question.text))
         for option_index, option in enumerate(question.options, start=1):
-            print(f"   {option_index}. {option}")
+            print("   %d. %s" % (option_index, option))
         print()
 
     def get_user_input(self, num_options):
@@ -66,7 +68,21 @@ class Questionnaire:
         print("Quiz Completed!")
         score_percentage = (self.score / num_questions_asked) * 100
         print(
-            f"Your Score: {self.score}/{num_questions_asked} ({score_percentage:.2f}%)")
+            "Your Score: %d/%d (%.2f%%)" % (
+                self.score, num_questions_asked, score_percentage)
+        )
+
+
+def center_console():
+    # Get the terminal width
+    terminal_width, _ = shutil.get_terminal_size()
+
+    # Calculate the left padding for centering
+    left_padding = (terminal_width -
+                    len("Welcome to the Geography Quiz!")) // 2
+
+    # Print spaces to create padding
+    print(" " * left_padding, end="")
 
 
 def main():
@@ -75,6 +91,8 @@ def main():
         "geography_questions.json")
 
     while True:
+        center_console()  # Center the output
+        print("Welcome to the Geography Quiz!")
         geography_questionnaire.take_quiz()
 
         retake = input("Do you want to retake the quiz? (yes/no): ")
@@ -83,6 +101,7 @@ def main():
             break
         else:
             print("Let's retake the quiz!\n")
+            geography_questionnaire = Questionnaire()  # Reset the questionnaire
 
 
 if __name__ == "__main__":
