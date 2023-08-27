@@ -1,6 +1,7 @@
 import json
 import random
 import os
+import sys
 
 
 class Question:
@@ -77,22 +78,20 @@ class Questionnaire:
 
 
 def main():
-    q = Questionnaire()
-    q.load_questions_from_file("geography_questions.json")
-
     while True:
+        q = Questionnaire()
+        q.load_questions_from_file("geography_questions.json")
+
         print("Welcome to the Geography Quiz!")
         q.take_quiz()
 
         retake = input("Do you want to retake the quiz? (yes/no): ")
         if retake.lower() != "yes":
             print("Thank you for taking the quiz!")
-            q.reset()
             break
         else:
             print("Let's retake the quiz!\n")
-            q.reset()
-            q.clear_screen()  # Clear the screen
+            q.clear_screen()
 
 
 if __name__ == "__main__":
