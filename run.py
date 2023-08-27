@@ -1,7 +1,5 @@
 import json
 import random
-import os
-import shutil
 
 
 class Question:
@@ -29,10 +27,13 @@ class Questionnaire:
                 )
                 self.questions.append(question)
 
+    def reset(self):
+        self.score = 0
+
     def display_question(self, index, question):
-        print("Question %d: %s" % (index, question.text))
+        print("Question {}: {}".format(index, question.text))
         for option_index, option in enumerate(question.options, start=1):
-            print("   %d. %s" % (option_index, option))
+            print("   {}. {}".format(option_index, option))
         print()
 
     def get_user_input(self, num_options):
@@ -50,7 +51,6 @@ class Questionnaire:
         self.score = 0
         num_questions_to_ask = min(5, len(self.questions))
 
-        # Shuffle the questions randomly
         shuffled_questions = random.sample(
             self.questions, num_questions_to_ask)
 
@@ -67,22 +67,9 @@ class Questionnaire:
     def display_results(self, num_questions_asked):
         print("Quiz Completed!")
         score_percentage = (self.score / num_questions_asked) * 100
-        print(
-            "Your Score: %d/%d (%.2f%%)" % (
-                self.score, num_questions_asked, score_percentage)
-        )
-
-
-def center_console():
-    # Get the terminal width
-    terminal_width, _ = shutil.get_terminal_size()
-
-    # Calculate the left padding for centering
-    left_padding = (terminal_width -
-                    len("Welcome to the Geography Quiz!")) // 2
-
-    # Print spaces to create padding
-    print(" " * left_padding, end="")
+        score_message = "Your Score: {}/{} ({:.2f}%)".format(
+            self.score, num_questions_asked, score_percentage)
+        print(score_message)
 
 
 def main():
@@ -91,7 +78,6 @@ def main():
         "geography_questions.json")
 
     while True:
-        center_console()  # Center the output
         print("Welcome to the Geography Quiz!")
         geography_questionnaire.take_quiz()
 
@@ -101,7 +87,7 @@ def main():
             break
         else:
             print("Let's retake the quiz!\n")
-            geography_questionnaire = Questionnaire()  # Reset the questionnaire
+            geography_questionnaire.reset()
 
 
 if __name__ == "__main__":
