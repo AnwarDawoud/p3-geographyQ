@@ -33,9 +33,9 @@ class Questionnaire:
         self.score = 0
 
     def display_question(self, index, question):
-        print("Question {}: {}".format(index, question.text))
+        print("Question {}: {}\n".format(index, question.text))
         for option_index, option in enumerate(question.options, start=1):
-            print("   {}. {}".format(option_index, option))
+            print("   {}. {}\n".format(option_index, option))
         print()
 
     def get_user_input(self, num_options):
@@ -73,8 +73,9 @@ class Questionnaire:
             self.score, num_questions_asked, score_percentage)
         print(score_message)
 
-    def clear_screen(self):
-        os.system('clear' if os.name == 'posix' else 'cls')
+
+def clear_screen():
+    os.system('clear' if os.name == 'posix' else 'cls')
 
 
 def main():
@@ -91,7 +92,7 @@ def main():
             break
         else:
             print("Let's retake the quiz!\n")
-            q.clear_screen()
+            clear_screen()
 
 
 if __name__ == "__main__":
